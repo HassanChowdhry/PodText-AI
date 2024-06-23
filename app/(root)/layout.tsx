@@ -2,6 +2,7 @@ import LeftNavbar from "@/components/LeftNav";
 import MobileNavbar from "@/components/MobileNav";
 import RightNavbar from "@/components/RightNav";
 import Image from "next/image";
+import { Toaster } from "@/components/ui/toaster"
 
 export default function RootLayout({
   children,
@@ -21,6 +22,7 @@ export default function RootLayout({
             </div>
 
             <div className="flex md:py-14 flex-col w-full">
+              <Toaster />
               {children}
             </div>
           </div>
