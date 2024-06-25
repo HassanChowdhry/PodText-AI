@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
+import { set, useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
@@ -139,7 +139,14 @@ export default function ProfileForm() {
               voicePrompt={voicePrompt}
               setVoicePrompt={setVoicePrompt}
             />
-            <GenerateThumbnail />
+            
+            <GenerateThumbnail 
+              setImage={setImageUrl}
+              setImageStorageId={setImageStorageId}
+              image={imageUrl}
+              imagePrompt={imagePrompt}
+              setImagePrompt={setImagePrompt}
+            />
             
             <Button className="w-full mt-10 text-white-1 transition-all hover:bg-black-1 duration-500
               text-[16px] bg-orange-1 py-4 font-extrabold" type="submit">
