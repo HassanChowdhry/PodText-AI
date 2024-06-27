@@ -29,14 +29,20 @@ import GeneratePodcast, { VoiceType } from "@/components/GeneratePodcast"
 import GenerateThumbnail from "@/components/GenerateThumbnail"
 import { Loader } from "lucide-react"
 import { Id } from "@/convex/_generated/dataModel"
+import { useToast } from "@/components/ui/use-toast"
+import { useMutation } from "convex/react"
+import { api } from "@/convex/_generated/api"
+import { useRouter } from "next/navigation"
 
 const formSchema = z.object({
   podcastTitle: z.string().min(2),
   podcastDescription: z.string().min(2),
 })
 
-export default function ProfileForm() {
+export default function CreatePodcast() {
   const [loading, setLoading] = useState<boolean>(false)
+  const { toast } = useToast()
+  const router = useRouter();
 
   const voices = ["alloy", "shimmer", "nova", "echo", "fable", "onyx"]
   const [voiceType, setVoiceType] = useState<VoiceType | null>(null);
@@ -49,8 +55,8 @@ export default function ProfileForm() {
   const [audioStorageId, setAudioStorageId] = useState<Id<"_storage"> | null>(null)
   const [audioUrl, setAudioUrl] = useState('')
   const [audioDuration, setAudioDuration] = useState(0)
-
-
+  
+  const createPodcast = useMutation(api.podcasts.createPodcast)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -59,11 +65,37 @@ export default function ProfileForm() {
       podcastDescription: "",
     },
   })
-
-
   
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true)
+    try {
+      if (!audioUrl || !imageUrl || !voiceType) {
+        toast({ title: "Please generate podcast and thumbnail", variant: "destructive" })
+        setLoading(false)
+        throw new Error("Please generate podcast and thumbnail")
+      }
+      const podcastData = {
+        podcastTitle: values.podcastTitle,
+        podcastDescription: values.podcastDescription,
+        audioUrl,
+        audioStorageId: audioStorageId!,
+        imageUrl,
+        imageStorageId: imageStorageId!,
+        voiceType,
+        audioDuration,
+        voicePrompt,
+        imagePrompt,
+        views: 0,        
+      }
+
+      const podcast = await createPodcast(podcastData)
+      toast({ title: "Podcast created" })
+      router.push('/')
+    } catch (error) {
+      console.error(error)
+      toast({ title: "Error submitting form", variant: "destructive" })  
+    }
+    setLoading(false)
   }
 
   return (

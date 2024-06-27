@@ -1,6 +1,6 @@
 import { Textarea } from "@/components/ui/textarea"
 import { Id } from "@/convex/_generated/dataModel";
-import { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { Loader } from "lucide-react";
@@ -24,7 +24,8 @@ const useGeneratePodcast = ({ voicePrompt, voiceType, setVoicePrompt, setAudio, 
 
   const { toast } = useToast()
   
-  const generatePodcast = async () => {
+  const generatePodcast = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
     setIsGenerating(true)
     setAudio('')
 
@@ -83,6 +84,7 @@ const GeneratePodcast = (props: GeneratePodcastProps) => {
   
   return (
     <div>
+      {/* TODO: add openai library to generate podcast using prompts */}
       <div className="flex flex-col gap-2.5">
         <Label className="text-[16px] font-bold text-white-1">
           Prompt to generate podcast.
