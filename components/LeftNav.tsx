@@ -4,6 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
+import { SignedIn, SignedOut } from '@clerk/nextjs';
+import { Button } from './ui/button';
 
 const LeftNavbar = () => {
   const pathname = usePathname();
@@ -42,7 +44,7 @@ const LeftNavbar = () => {
           const isActive = pathname === route || pathname.startsWith(`${route}/`);
           return (
             <Link 
-              className={`${isActive && "bg-nav-focus border-r-4 border-orange-1"} 
+              className={`${isActive && "bg-nav-focus border-r-4 border-sakura-1"} 
                 flex gap-3 py-6 items-center max-lg:px-4 justify-center lg:justify-start`}
               href={route}
               key={label}>
@@ -52,6 +54,17 @@ const LeftNavbar = () => {
           )
         })}
       </nav>
+
+      <SignedOut>
+        <Button className='bg-sakura-1 p-3 '>
+          Sign In
+        </Button>
+      </SignedOut>
+      <SignedIn>
+        <Button className='bg-sakura-1 p-3 mx-auto'>
+          Sign Out
+        </Button>
+      </SignedIn>
     </section>
   );
 };

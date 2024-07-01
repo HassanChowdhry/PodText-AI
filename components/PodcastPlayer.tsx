@@ -105,7 +105,7 @@ const PodcastDetailPlayer = ({
 
           <Button
             onClick={handlePlay}
-            className="text-[16px] w-full max-w-[250px] transition-all duration-500 bg-orange-1 hover:bg-orange-700 font-extrabold text-white-1"
+            className="text-[16px] w-full max-w-[250px] transition-all duration-500 bg-sakura-1 hover:bg-sakura-2 font-extrabold text-white-1"
           >
             <Image
               src="/icons/Play.svg"

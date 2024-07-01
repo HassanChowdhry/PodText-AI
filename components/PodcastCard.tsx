@@ -14,7 +14,6 @@ type PodcastCardProps = {
 };
 
 const PodcastCard: React.FC<PodcastCardProps> = ({ podcast }) => {
-  console.log(podcast)
   const router = useRouter()
 
   const handleViewsPodcast = () => {

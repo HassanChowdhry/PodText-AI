@@ -125,13 +125,13 @@ export default function CreatePodcast() {
               </Label>
 
               <Select onValueChange={(value) => setVoiceType(value as VoiceType)}>
-                <SelectTrigger className="text-[16px] w-full border-none focus-visible:ring-offset-orange-1 bg-black-1 text-white-1">
+                <SelectTrigger className="text-[16px] w-full border-none focus-visible:ring-offset-sakura-1 bg-black-1 text-white-1">
                   <SelectValue placeholder="Select Voice" className="placeholder:text-gray-1" />
                 </SelectTrigger>
                 <SelectContent className="text-[16px] border-none
-                   bg-black-1 font-bold text-white-1 focus:ring-orange-1">
+                   bg-black-1 font-bold text-white-1 focus:ring-sakura-1">
                     {voices.map((voice) => (
-                      <SelectItem className="capitalize focus:bg-orange-1" key={voice} value={voice}>
+                      <SelectItem className="capitalize focus:bg-sakura-1" key={voice} value={voice}>
                         {voice}
                       </SelectItem>
                     ))}
@@ -181,7 +181,7 @@ export default function CreatePodcast() {
             />
             
             <Button className="w-full mt-10 text-white-1 transition-all hover:bg-black-1 duration-500
-              text-[16px] bg-orange-1 py-4 font-extrabold" type="submit">
+              text-[16px] bg-sakura-1 py-4 font-extrabold" type="submit">
                 {loading ? (
                 <>
                   Submitting...

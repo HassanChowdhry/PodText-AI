@@ -114,8 +114,8 @@ const GenerateThumbnail = ({ setImage, setImageStorageId, image, imagePrompt, se
           </div>
 
           <div className="w-full max-w-[200px]">
-            <Button className="w-full mt-10 text-white-1 transition-all hover:bg-orange-700 duration-500
-                text-[16px] bg-orange-1 py-4 font-bold" onClick={generatePicture} type="submit">
+            <Button className="w-full mt-10 text-white-1 transition-all hover:bg-sakura-2 duration-500
+                text-[16px] bg-sakura-1 py-4 font-bold" onClick={generatePicture} type="submit">
                   {isGenerating ? (
                   <>
                     Generating...
@@ -143,7 +143,7 @@ const GenerateThumbnail = ({ setImage, setImageStorageId, image, imagePrompt, se
             </div>
           )}
           <div className='flex flex-col items-center gap-1s'>
-            <h2 className='text-[14px] font-bold text-orange-1'>
+            <h2 className='text-[14px] font-bold text-sakura-1'>
               Click to upload
             </h2>
             <p className='font-normal text-[14px] text-gray-1'>SVG, PNG, JPG, or GIF</p>

@@ -158,8 +158,8 @@ const GeneratePodcast = (props: GeneratePodcastProps) => {
           </div>
 
           <div className="w-full max-w-[200px]">
-            <Button className="w-full mt-10 text-white-1 transition-all hover:bg-orange-700 duration-500
-                text-[16px] bg-orange-1 py-4 font-bold" onClick={generatePodcastUsingPrompt} type="submit">
+            <Button className="w-full mt-10 text-white-1 transition-all hover:bg-sakura-2 duration-500
+                text-[16px] bg-sakura-1 py-4 font-bold" onClick={generatePodcastUsingPrompt} type="submit">
                   {isCreating ? (
                   <>
                     Creating...
@@ -198,8 +198,8 @@ const GeneratePodcast = (props: GeneratePodcastProps) => {
       )}
 
       <div className="mt-5 w-full max-w-[200px]">
-        <Button className="w-full mt-10 text-white-1 transition-all hover:bg-orange-700 duration-500
-            text-[16px] bg-orange-1 py-4 font-bold" onClick={generatePodcast} type="submit">
+        <Button className="w-full mt-10 text-white-1 transition-all hover:bg-sakura-2 duration-500
+            text-[16px] bg-sakura-1 py-4 font-bold" onClick={generatePodcast} type="submit">
               {isGenerating ? (
               <>
                 Generating...
