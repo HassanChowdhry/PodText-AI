@@ -19,9 +19,11 @@ export const getUserById = query({
 });
 
 export const getTopUserByPodcastCount = query({
-  args: {},
-  handler: async (ctx, args) => {
-    const user = await ctx.db.query("users").collect();
+  args: {
+    num_res: v.number(),
+  },
+  handler: async (ctx, { num_res }) => {
+    const user = await ctx.db.query("users").take(num_res);
 
     const userData = await Promise.all(
       user.map(async (u) => {

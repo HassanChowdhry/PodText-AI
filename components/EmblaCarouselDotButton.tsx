@@ -51,14 +51,17 @@ export const useDotButton = (
   }
 }
 
-type PropType = ComponentPropsWithRef<'button'>
+type DotButtonProps =  {
+  selected: boolean;
+  onClick: () => void;
+}
 
-export const DotButton: React.FC<PropType> = (props) => {
-  const { children, ...restProps } = props
+export const DotButton: React.FC<DotButtonProps> = ({ selected, onClick }) => {
 
   return (
-    <button type="button" {...restProps}>
-      {children}
-    </button>
+    <button 
+      className={`${selected? "bg-white-1": "bg-white-3"} size-2.5 cursor-pointer rounded-full transition-all duration-300`}
+      onClick={onClick} 
+      type="button" />
   )
 }

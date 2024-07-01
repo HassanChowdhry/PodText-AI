@@ -48,10 +48,23 @@ export const createPodcast = mutation({
 })
 
 export const getPodcasts = query({
-  handler: async(ctx) => {
-    const podcasts = await ctx.db.query("podcasts").take(8);
+  args: {
+    num_res: v.number(),
+  },
+  handler: async(ctx, { num_res }) => {
+    const podcasts = await ctx.db.query("podcasts").take(num_res);
     // const podcasts = await ctx.db.query("podcasts").collect();
     return podcasts;
+  }
+})
+
+export const getUsers = query({
+  args: {
+    num_res: v.number(),
+  },
+  handler: async(ctx, { num_res }) => {
+    const users = await ctx.db.query("users").take(num_res);
+    return users;
   }
 })
 

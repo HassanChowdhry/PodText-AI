@@ -206,7 +206,7 @@ const GeneratePodcast = (props: GeneratePodcastProps) => {
                 <Loader size={20} className="animate-spin mr-2" />
               </>
               ) 
-                : "Generate Podcast"}
+                : "Create Audio"}
           </Button>
       </div>
       {audio && (

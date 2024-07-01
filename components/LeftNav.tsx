@@ -4,12 +4,13 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { SignedIn, SignedOut } from '@clerk/nextjs';
+import { SignedIn, SignedOut, useClerk } from '@clerk/nextjs';
 import { Button } from './ui/button';
 
 const LeftNavbar = () => {
   const pathname = usePathname();
   const router = useRouter();
+  const { signOut } = useClerk();
   const links = [
     {
       route: '/',
@@ -56,14 +57,22 @@ const LeftNavbar = () => {
       </nav>
 
       <SignedOut>
-        <Button className='bg-sakura-1 p-3 '>
-          Sign In
-        </Button>
+        <div className='flex-center w-full pb-10 lg:pr-8 max-lg:px-4'>
+          <Button 
+            onClick={() => router.push('/sign-in')}
+            className='bg-sakura-1 w-full text-[16px] font-bold'>
+            Sign In
+          </Button>
+        </div>
       </SignedOut>
       <SignedIn>
-        <Button className='bg-sakura-1 p-3 mx-auto'>
-          Sign Out
-        </Button>
+        <div className='flex-center w-full pb-10 lg:pr-8 max-lg:px-4'>
+          <Button 
+            onClick={() => signOut(() => router.push('/'))}
+            className='bg-sakura-1 hover:bg-sakura-2 duration-500 w-full text-[16px] font-bold'>
+            Sign Out
+          </Button>
+        </div>
       </SignedIn>
     </section>
   );

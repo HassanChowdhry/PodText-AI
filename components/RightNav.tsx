@@ -9,10 +9,14 @@ import Header from './Header';
 import EmblaCarousel from './EmblaCarousel';
 import { useQuery } from 'convex/react';
 import { api } from '@/convex/_generated/api';
+import { useRouter } from 'next/navigation';
 
 const RightNavbar = () => {
   const { user }= useUser();
-  const podcasts = useQuery(api.podcasts.getPodcasts)
+  const podcasts = useQuery(api.podcasts.getPodcasts, {num_res: 4})
+  const users = useQuery(api.users.getTopUserByPodcastCount, {num_res: 4})
+  console.log(podcasts)
+  const router = useRouter();
   return (
     <section className='right_sidebar text-white-1'>
       <SignedIn>
@@ -33,6 +37,38 @@ const RightNavbar = () => {
         <Header headerTitle='Listeners also like this' />
         <EmblaCarousel podcasts={podcasts} />
       </div>
+
+      <section className='flex flex-col gap-8 pt-12'>
+        <Header headerTitle='Top Podcast Channels' />
+        <div className='flex flex-col gap-6'>
+          {users && users.map(({ clerkId, imageUrl, name, totalPodcasts }, index) => (
+            <div
+              key={clerkId}
+              className='flex justify-between cursor-pointer'
+              onClick={() => router.push(`/profile/${clerkId}`)}
+            >
+              <figure className='flex items-center gap-2'>
+                <Image 
+                  src={imageUrl}
+                  width={40}
+                  height={40}
+                  alt='podcast'
+                  className='aspect-sqaure rounded-lg'
+                />
+                <h2 className='text-[16px] text-white-1 font-semibold'>
+                  {name}
+                </h2>
+              </figure>
+              <div className='flex items-center'>
+                <p className='text-[12px] font-normal'>
+                  {totalPodcasts} Podcasts
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </section>
     </section>
   );
 };

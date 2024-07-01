@@ -5,7 +5,7 @@ import PodcastCard from "@/components/PodcastCard";
 
 export default function Home() {
 
-  const podcastData = useQuery(api.podcasts.getPodcasts);
+  const podcastData = useQuery(api.podcasts.getPodcasts, { num_res: 8 });
 
   return (
     <div className="mt-9 flex flex-col ">

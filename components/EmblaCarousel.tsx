@@ -4,6 +4,8 @@ import { DotButton, useDotButton } from './EmblaCarouselDotButton'
 import Autoplay from 'embla-carousel-autoplay'
 import useEmblaCarousel from 'embla-carousel-react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
+import LoaderSpinner from './LoaderSpinner'
 
 type PropType = {
   podcasts?: any
@@ -29,33 +31,54 @@ const EmblaCarousel: React.FC<PropType> = ({ podcasts }) => {
     emblaApi,
     onNavButtonClick
   )
+  if (!podcasts) return (<LoaderSpinner /> )
 
-  const slides = podcasts;
   return (
-    <section className="embla">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">
-          {slides && slides.map((index:number) => (
-            <div className="embla__slide" key={index}>
-              <div className="embla__slide__number">{index + 1}</div>
-            </div>
-          ))}
-        </div>
+    <section ref={emblaRef} className="flex flex-col w-full gap-4 overflow-hidden mt-4">
+      <div className='flex'>
+        {podcasts && podcasts.map((podcast: any, index: number) => (
+          <figure 
+            key={index}
+            className='carousel_box'
+            onClick={() => router.push(`/podcast/${podcast._id}`)}
+            >
+            <Image
+              fill
+              className='absolute size-full rounded-xl border-none'
+              src={podcast.imageUrl} 
+              alt={podcast.podcastTitle} />
+            <figcaption className='glassmorphism-black relative flex flex-col p-2 rounded-b-xl z-10'>
+              <h2 className='font-bold text-white-1 text-[14px]'>
+                {podcast.podcastTitle}
+              </h2>
+              <p className='text-[12px] font-semibold text-white-2'>
+                {podcast.author}
+              </p>
+              <div className='flex gap-2'>
+                <Image 
+                  src="/icons/headphone.svg"
+                  width={20}
+                  height={20}
+                  alt='headphones icon'
+                />
+                <h2 className='text-[14px] font-bold text-white-1'>
+                  {podcast?.views}
+                </h2>
+              </div>
+            </figcaption>
+          </figure>
+        ))}
       </div>
 
-      <div className="embla__controls">
-        <div className="embla__dots">
+        <div className="flex justify-center gap-2">
           {scrollSnaps.map((_, index) => (
             <DotButton
               key={index}
               onClick={() => onDotButtonClick(index)}
-              className={'embla__dot'.concat(
-                index === selectedIndex ? ' embla__dot--selected' : ''
-              )}
+              selected={selectedIndex === index}
             />
           ))}
         </div>
-      </div>
     </section>
   )
 }
