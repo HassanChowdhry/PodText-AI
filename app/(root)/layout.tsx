@@ -3,6 +3,7 @@ import MobileNavbar from "@/components/MobileNav";
 import RightNavbar from "@/components/RightNav";
 import Image from "next/image";
 import { Toaster } from "@/components/ui/toaster"
+import Player from "@/components/Player";
 
 export default function RootLayout({
   children,
@@ -30,6 +31,7 @@ export default function RootLayout({
 
         <RightNavbar />
       </main>
+      <Player />
     </div>
   );
 }

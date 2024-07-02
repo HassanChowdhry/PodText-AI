@@ -15,7 +15,6 @@ const RightNavbar = () => {
   const { user }= useUser();
   const podcasts = useQuery(api.podcasts.getPodcasts, {num_res: 4})
   const users = useQuery(api.users.getTopUserByPodcastCount, {num_res: 4})
-  console.log(podcasts)
   const router = useRouter();
   return (
     <section className='right_sidebar text-white-1'>
