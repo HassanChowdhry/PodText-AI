@@ -7,32 +7,33 @@ import { usePathname, useRouter } from 'next/navigation';
 import { SignedIn, SignedOut, useClerk } from '@clerk/nextjs';
 import { Button } from './ui/button';
 
+export const links = [
+  {
+    route: '/',
+    label: 'Home',
+    imageURL: '/icons/home.svg'
+  },
+  {
+    route: '/discover',
+    label: 'Discover',
+    imageURL: '/icons/discover.svg'
+  },
+  {
+    route: '/create-podcast',
+    label: 'Create Podcast',
+    imageURL: '/icons/microphone.svg'
+  },
+  {
+    route: '/profile',
+    label: 'My Profile',
+    imageURL: '/icons/profile.svg'
+  },
+];
+
 const LeftNavbar = () => {
   const pathname = usePathname();
   const router = useRouter();
   const { signOut } = useClerk();
-  const links = [
-    {
-      route: '/',
-      label: 'Home',
-      imageURL: '/icons/home.svg'
-    },
-    {
-      route: '/discover',
-      label: 'Discover',
-      imageURL: '/icons/discover.svg'
-    },
-    {
-      route: '/create-podcast',
-      label: 'Create Podcast',
-      imageURL: '/icons/microphone.svg'
-    },
-    {
-      route: '/profile',
-      label: 'My Profile',
-      imageURL: '/icons/profile.svg'
-    },
-  ];
   return (
     <section className='left_sidebar'>
       <nav className='flex flex-col'>

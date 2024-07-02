@@ -53,7 +53,6 @@ export const getPodcasts = query({
   },
   handler: async(ctx, { num_res }) => {
     const podcasts = await ctx.db.query("podcasts").take(num_res);
-    // const podcasts = await ctx.db.query("podcasts").collect();
     return podcasts;
   }
 })
