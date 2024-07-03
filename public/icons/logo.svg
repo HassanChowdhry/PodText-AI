@@ -6,7 +6,7 @@
   <defs>
     <linearGradient id="paint0_linear_3676_2372" x1="16.5285" y1="-10.8157" x2="45.68" y2="18.3358" gradientUnits="userSpaceOnUse">
       <stop stop-color="#FD6D6D"/>
-      <stop offset="1" stop-color="#F97535"/>
+      <stop offset="1" stop-color="#ff92c4"/>
     </linearGradient>
     <linearGradient id="paint1_linear_3676_2372" x1="-16.282" y1="1.72432" x2="0.389741" y2="-14.0819" gradientUnits="userSpaceOnUse">
       <stop stop-color="white"/>
@@ -16,7 +16,7 @@
     <linearGradient id="paint2_linear_3676_2372" x1="14.4576" y1="-7.68138" x2="22.8076" y2="18.4645" gradientUnits="userSpaceOnUse">
       <stop stop-color="#FD6D6D"/>
       <stop offset="0.5" stop-color="#71381D"/>
-      <stop offset="1" stop-color="#F97535"/>
+      <stop offset="1" stop-color="#ff92c4"/>
     </linearGradient>
     <linearGradient id="paint3_linear_3676_2372" x1="6.15281" y1="-10.2136" x2="25.248" y2="13.2306" gradientUnits="userSpaceOnUse">
       <stop stop-color="#FD6D6D"/>

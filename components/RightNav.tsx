@@ -28,6 +28,7 @@ const RightNavbar = () => {
             <h1 className='text-[16px] truncate font-semibold text-white-1'>
               {user?.firstName} {user?.lastName}
             </h1>
+
             <Image src="/icons/right-arrow.svg" width={24} height={24} alt=''/>
           </div>
         </Link>

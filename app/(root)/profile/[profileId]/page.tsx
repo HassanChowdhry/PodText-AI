@@ -37,7 +37,7 @@ export default function Profile({ params: { profileId } }: { params: { profileId
   
   const { imageUrl, name } = user
   return (
-    <section className="mt-9 flex flex-col">
+    <section className="animate-fade-in mt-9 flex flex-col">
         <h1 className="text-[20px] font-bold text-white-1 max-md:text-center">
           {name}&apos;s Channel
         </h1>

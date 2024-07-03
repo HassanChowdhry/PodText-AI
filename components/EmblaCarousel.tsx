@@ -49,12 +49,12 @@ const EmblaCarousel: React.FC<PropType> = ({ podcasts }) => {
         {podcasts && podcasts.map((podcast: any, index: number) => (
           <figure 
             key={index}
-            className='carousel_box'
+            className='carousel_box overflow-hidden'
             onClick={() => onPodcastClick(podcast._id)}
             >
             <Image
               fill
-              className='absolute size-full rounded-xl border-none'
+              className='absolute size-full rounded-xl border-none hover:scale-105 ease-in-out duration-200'
               src={podcast.imageUrl} 
               alt={podcast.podcastTitle} 
             />

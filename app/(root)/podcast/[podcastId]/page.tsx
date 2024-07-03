@@ -22,7 +22,7 @@ export default function PodcastDetails ({ params }: { params: { podcastId: Id<"p
   const isOwner = user?.id === podcast?.authorId;
   
   return (
-    <section className='flex w-full flex-col'>
+    <section className='animate-fade-in flex w-full flex-col'>
       <header className='mt-9 flex items-center justify-between'>
         <h1 className='text-[20px] font-bold text-white-1'>Currently Playing</h1>
         <figure className='flex gap-3'>

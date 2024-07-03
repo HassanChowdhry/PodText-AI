@@ -10,7 +10,7 @@ import SearchBar from '@/components/SearchBar';
 const Discover = ({ searchParams: { search } }: {searchParams: { search: string }}) => {
   const podcastsData = useQuery(api.podcasts.getPodcastBySearch, { search: search || "" })
   return (
-    <div className='flex flex-col gap-9'>
+    <div className='animate-fade-in flex flex-col gap-9'>
       <SearchBar />
       
       <div className='flex flex-col gap-9'>

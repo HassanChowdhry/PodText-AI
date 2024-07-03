@@ -38,9 +38,6 @@ const config = {
           1: "#ff92c4",
           2: "#c3829e"
         },
-        orange: {
-          1: "#F97535",
-        },
         gray: {
           1: "#71788B",
         },
@@ -49,19 +46,14 @@ const config = {
         "nav-focus":
           "linear-gradient(270deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.00) 100%)",
       },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-      },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fadeIn 0.5s ease-in-out",
+      },
+      keyframes: {
+        "fadeIn": {
+          from: { opacity: "0" },
+					to: { opacity: "1" },
+        },
       },
     },
   },

@@ -99,7 +99,7 @@ export default function CreatePodcast() {
   }
 
   return (
-    <section className="flex flex-col ">
+    <section className="animate-fade-in flex flex-col ">
       <h1 className="text-white-1 text-[20px] font-bold">Create Podcast</h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="mt-12 w-full flex-col">
