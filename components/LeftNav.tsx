@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { SignedIn, SignedOut, useClerk } from '@clerk/nextjs';
+import { SignedIn, SignedOut, useClerk, useUser } from '@clerk/nextjs';
 import { Button } from './ui/button';
 
 export const links = [
@@ -34,6 +34,9 @@ const LeftNavbar = () => {
   const pathname = usePathname();
   const router = useRouter();
   const { signOut } = useClerk();
+  const { user }= useUser();
+  const Id = user?.id;
+
   return (
     <section className='left_sidebar'>
       <nav className='flex flex-col'>
@@ -48,7 +51,7 @@ const LeftNavbar = () => {
             <Link 
               className={`${isActive && "bg-nav-focus border-r-4 border-sakura-1"} 
                 flex gap-3 py-6 items-center max-lg:px-4 justify-center lg:justify-start`}
-              href={route}
+              href={route==="/profile" ? `/profile/${Id}` : route}
               key={label}>
               <Image src={imageURL} alt={label} width={30} height={30} />
               <p>{label}</p>

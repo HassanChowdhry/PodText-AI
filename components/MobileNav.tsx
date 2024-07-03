@@ -12,8 +12,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation";
 import { links } from "./LeftNav";
+import { useUser } from "@clerk/nextjs";
 
 const MobileNavbar = () => {
+  const { user } = useUser();
+  const Id = user?.id;
   const pathname = usePathname();
   const router = useRouter();
   return (
@@ -47,7 +50,7 @@ const MobileNavbar = () => {
                   <Link 
                     className={`${isActive && "bg-nav-focus border-r-4 border-sakura-1"} 
                       flex gap-3 py-6 items-center max-lg:px-4 justify-start lg:justify-start`}
-                    href={route}
+                    href={route==="/profile" ? `/profile/${Id}` : route}
                     key={label}>
                     <Image src={imageURL} alt={label} width={30} height={30} />
                     <p>{label}</p>

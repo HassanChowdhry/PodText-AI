@@ -6,6 +6,9 @@ import useEmblaCarousel from 'embla-carousel-react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import LoaderSpinner from './LoaderSpinner'
+import { api } from '@/convex/_generated/api'
+import { useMutation } from 'convex/react'
+import { Id } from '@/convex/_generated/dataModel'
 
 type PropType = {
   podcasts?: any
@@ -14,7 +17,14 @@ type PropType = {
 const EmblaCarousel: React.FC<PropType> = ({ podcasts }) => {
   const router = useRouter();
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop:true }, [Autoplay()])
+  const updateListens = useMutation(api.podcasts.updatePodcastViews);
 
+  const onPodcastClick = (podcastId: Id<"podcasts">) => {
+    updateListens({
+      podcastId: podcastId,
+    });
+    router.push(`/podcast/${podcastId}`)
+  }
   const onNavButtonClick = useCallback((emblaApi: EmblaCarouselType) => {
     const autoplay = emblaApi?.plugins()?.autoplay
     if (!autoplay) return
@@ -40,13 +50,14 @@ const EmblaCarousel: React.FC<PropType> = ({ podcasts }) => {
           <figure 
             key={index}
             className='carousel_box'
-            onClick={() => router.push(`/podcast/${podcast._id}`)}
+            onClick={() => onPodcastClick(podcast._id)}
             >
             <Image
               fill
               className='absolute size-full rounded-xl border-none'
               src={podcast.imageUrl} 
-              alt={podcast.podcastTitle} />
+              alt={podcast.podcastTitle} 
+            />
             <figcaption className='glassmorphism-black relative flex flex-col p-2 rounded-b-xl z-10'>
               <h2 className='font-bold text-white-1 text-[14px]'>
                 {podcast.podcastTitle}

@@ -1,9 +1,12 @@
+import { api } from '@/convex/_generated/api';
+import { Id } from '@/convex/_generated/dataModel';
+import { useMutation } from 'convex/react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
 type Podcast = {
-  _id: number;
+  _id: Id<"podcasts">;
   podcastTitle: string;
   podcastDescription: string;
   imageUrl: string;
@@ -15,8 +18,12 @@ type PodcastCardProps = {
 
 const PodcastCard: React.FC<PodcastCardProps> = ({ podcast }) => {
   const router = useRouter()
+  const updateListens = useMutation(api.podcasts.updatePodcastViews);
 
   const handleViewsPodcast = () => {
+    updateListens({
+      podcastId: podcast._id,
+    });
     router.push(`/podcast/${podcast._id}`, {
       scroll: true,
     });
