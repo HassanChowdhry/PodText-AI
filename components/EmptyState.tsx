@@ -25,7 +25,7 @@ const EmptyState = ({ title, search,  buttonLink, buttonText }: EmptyStateProps)
           <p>Try adjusting your search to find what you are looking for</p>
         )}
         {buttonLink && buttonText && (
-          <Button className='bg-sakura-1'>
+          <Button className='bg-sakura-1 hover:bg-sakura-2 duration-500'>
             <Link href={buttonLink} className='gap-2 flex'>
               <Image 
                 src="/icons/discover.svg"
@@ -33,7 +33,7 @@ const EmptyState = ({ title, search,  buttonLink, buttonText }: EmptyStateProps)
                 height={24}
                 alt='discover icon'
               />
-              <h1 className='text-[16px] font-bold text-white-1'>
+              <h1 className='text-[16px] font-bold text-white-1 '>
                 {buttonText}
               </h1>
             </Link>
