@@ -9,6 +9,8 @@ import LoaderSpinner from '@/components/LoaderSpinner';
 import PodcastCard from '@/components/PodcastCard';
 import EmptyState from '@/components/EmptyState';
 import { useUser } from '@clerk/nextjs';
+import Markdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export default function PodcastDetails ({ params }: { params: { podcastId: Id<"podcasts"> } }) {
   const { podcastId } = params;
@@ -51,7 +53,14 @@ export default function PodcastDetails ({ params }: { params: { podcastId: Id<"p
       <div className='flex flex-col gap-8'>
         <div className='flex flex-col gap-4'>
           <h1 className='text-[16px] text-white-1 font-bold'>Transcript</h1>
-          <p className='text-[16px] font-medium text-white-2'>{podcast?.voicePrompt}</p>
+          <div className='text-[16px] font-medium text-white-2'>
+              <Markdown
+                  className="markdown"
+                  remarkPlugins={[remarkGfm]}
+              >
+                  {podcast?.voicePrompt}
+              </Markdown>
+          </div>
         </div>
 
         <div className='flex flex-col gap-4'>
